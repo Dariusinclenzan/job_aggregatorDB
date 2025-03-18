@@ -9,8 +9,8 @@ from selenium.webdriver import ActionChains
 import re
 
 server = "localhost\SQLEXPRESS"
-database = "JobHunterDB"
-username = "sa"
+database = os.getenv("db_name")
+username = os.getenv("db_username")
 passwordDB = os.getenv("jobDB_password")
 conn_string = f"DRIVER={{SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={passwordDB}"
 email = os.getenv("email")
