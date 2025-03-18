@@ -17,6 +17,8 @@ email = os.getenv("email")
 password = os.getenv("linkedin_password")
 conn = pyodbc.connect(conn_string)
 cursor = conn.cursor()
+search_input = input('What job are you looking for?: ')
+location_input = input('Please insert the location: ')
 
 driver = webdriver.Firefox()
 driver.get("https://www.linkedin.com/")
@@ -85,7 +87,7 @@ def insert_into_DB(jobs):
         cursor.close()
         conn.close()
 
-selenium_input("QA Automation", "Cluj-Napoca")
+selenium_input(search_input, location_input)
 jobs = linkedin_jobs()
 if jobs:
     insert_into_DB(jobs)
